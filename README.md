@@ -1,3 +1,3 @@
 # go-serverless-app
 
-Asimple api with CRUD ducntions uding API Gateway , DynamoDB , Lambda Comlpete serveless stack
+A simple API with CRUD functions using API Gateway , DynamoDB , Lambda Comlpete serveless stack

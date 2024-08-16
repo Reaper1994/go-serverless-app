@@ -31,7 +31,7 @@ go run cmd/main.go
 
 The application exposes the following API endpoints:
 
-- **GET https://localhost:8000 : Retrieve a list of users.
+- **GET https://localhost:8000** : Retrieve a list of users.
 - **POST https://localhost:8000**: Create a new user.
 - **PUT https://localhost:8000/{id}**: Update an existing user.
 - **DELETE https://localhost:8000/{id}**: Delete a user.

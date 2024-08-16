@@ -3,6 +3,10 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"io"
+	"net/http"
+	"os"
+
 	"github.com/Reaper1994/go-serverless-app/package/handlers"
 	"github.com/Reaper1994/go-serverless-app/package/middlewares"
 	"github.com/aws/aws-lambda-go/events"
@@ -11,9 +15,6 @@ import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbiface"
-	"io/ioutil"
-	"net/http"
-	"os"
 )
 
 func initializeMiddleware(handler http.Handler) http.Handler {
@@ -74,7 +75,7 @@ func lambdaHandler(req events.APIGatewayProxyRequest) (*events.APIGatewayProxyRe
 // lambdaHandlerToHTTPHandler converts a Lambda handler to an http.Handler
 func lambdaHandlerToHTTPHandler(lambdaHandler func(events.APIGatewayProxyRequest) (*events.APIGatewayProxyResponse, error)) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		bodyBytes, err := ioutil.ReadAll(r.Body)
+		bodyBytes, err := io.ReadAll(r.Body) // Updated to use io.ReadAll
 		if err != nil {
 			http.Error(w, "could not read request body", http.StatusInternalServerError)
 			return
